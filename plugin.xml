@@ -1,0 +1,15 @@
+<library path="src">
+  <class name="RosbagPlugin" type="rqt_rosbag.rqt_rosbag.RosbagPlugin" base_class_type="rqt_gui_py::Plugin" >
+    <description>
+      An example Python GUI plugin to create a great user interface.
+    </description>
+    <qtgui>
+      <group>
+	<label>Logging</label>
+      </group>
+      <label>Rosbag Plugin</label>
+      <icon type="theme">applications-other</icon>
+      <statustip>Great user interface to provide real value.</statustip>
+    </qtgui>
+  </class>
+</library>
