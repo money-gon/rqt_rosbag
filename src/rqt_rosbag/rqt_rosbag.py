@@ -36,24 +36,32 @@ class RosbagPlugin(Plugin):
         # Add widget to the user interface
         context.add_widget(self._widget)
 
-        # initialize comboBox
+        # initialize 
         files = self.get_files(join(pkg_path, 'scripts/'), '*.yaml')
         self._widget.TopicListComboBox.addItems(files)
 
         # callback
         self._widget.RecordPushButton.clicked.connect(self._record_clicked)
         self._widget.StopPushButton.clicked.connect(self._stop_clicked)
+        self._widget.DurationCheckBox.stateChanged.connect(self._duration_checked)
 
+    def _duration_checked(self):
+        enabled = self._widget.DurationCheckBox.isChecked()
+        self._widget.DulationSpinBox.setEnabled(enabled)
+            
     def _record_clicked(self):
         print(self._widget.FileNameLineEdit.text())
-        print(self._widget.DulationSpinBox.text())
-        print(self._widget.CompressCheckBox.isChecked())
+        duration = -1
+        if self._widget.DurationCheckBox.isChecked():
+            duration = self._widget.DulationSpinBox.value()
+        print(duration)
         print(self._widget.TopicListComboBox.currentText())
         self.widget_enabled(False)
 
     def _stop_clicked(self):
         print("stop clicked")
         self.widget_enabled(True)
+        self._duration_checked()
 
     # path以下のformat指定のファイルを返す
     def get_files(self, path, format):
@@ -63,8 +71,9 @@ class RosbagPlugin(Plugin):
     def widget_enabled(self, enabled):
         self._widget.FileNameLineEdit.setEnabled(enabled)
         self._widget.DulationSpinBox.setEnabled(enabled)
-        self._widget.CompressCheckBox.setEnabled(enabled)
+        self._widget.DurationCheckBox.setEnabled(enabled)
         self._widget.TopicListComboBox.setEnabled(enabled)
+        self._widget.RecordPushButton.setEnabled(enabled)
 
     def shutdown_plugin(self):
         # TODO unregister all publishers here

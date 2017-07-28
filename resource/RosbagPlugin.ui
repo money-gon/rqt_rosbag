@@ -41,7 +41,7 @@
     <item>
      <widget class="QLabel" name="label">
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;file name prefix&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;filename prefix&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
@@ -120,13 +120,13 @@
            <string/>
           </property>
           <property name="minimum">
-           <number>-1</number>
+           <number>0</number>
           </property>
           <property name="maximum">
            <number>99</number>
           </property>
           <property name="value">
-           <number>-1</number>
+           <number>1</number>
           </property>
          </widget>
         </item>
@@ -140,12 +140,12 @@
        </layout>
       </item>
       <item>
-       <widget class="QCheckBox" name="CompressCheckBox">
+       <widget class="QCheckBox" name="DurationCheckBox">
         <property name="acceptDrops">
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>compress</string>
+         <string>duration</string>
         </property>
         <property name="checked">
          <bool>true</bool>
